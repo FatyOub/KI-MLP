@@ -1,5 +1,101 @@
 # KI-MLP
 
+# NN.MLP.01: Perzeptron-Netze
+
+P1:
+
+   x_1-Gewicht : 0
+
+   x_2-Gewicht : 1
+
+   Bias : -3
+
+   Funktion x_2 >= 3
+
+    Ausgabe: h_1 = sign(0 * x_1 + 1 * x_2 - 3).
+   
+P2:
+
+   x1-Gewicht : 1
+
+   x2-Gewicht : 0
+
+   Bias       : -2
+
+   Funktion   :  x_1 >= 2
+
+   Ausgabe:   h_2 = sign(1 * x_1 + 0 * x_2 - 2).
+
+P3:
+
+   x1-Gewicht : 1
+
+   x2-Gewicht  : 1
+
+   Bias        : 1
+
+   Funktion    : ODER VERknüpfung 
+
+   Ausgabe : y = sign(1 * h_1 + 1 * h_2 + 1).
+   
+# NN.MLP.02: Vorwärtslauf im MLP 
+
+# die Dimensionen der Gewichtsmatrizen und der Bias-Vektoren:
+
+schicht 1:
+
+     verbindung : Input (25) -> Hidden 1 (64)
+
+     Gewichtsmatrix W :  64 * 25 
+
+     Bias-Vektor b : 64 * 1
+
+schicht 2:
+
+    verbindung : Hidden 1 (64) -> Hidden 2 (32)
+
+     Gewichtsmatrix W : 32 * 64
+
+     Bias-Vektor b : 32 * 1
+
+schicht 3:
+
+    verbindung : Hidden 2 (32) -> Output (4)
+
+     Gewichtsmatrix W : 4 * 32
+
+     Bias-Vektor b : 4 * 1
+
+
+#  Matrix-Notation 
+
+Der Vorwärtslauf berechnet die Aktivierungen jeder Schicht sukzessive. Als Aktivierungsfunktion wird für alle Schichten die ReLU-Funktion (ReLU(z) = max(0, z)) verwendet. 
+
+Sei a^[0] = x der Eingabevektor:
+
+Erste versteckte Schicht:
+
+z^[1] = W^[1] * a^[0] + b^[1]
+
+a^[1] = ReLU(z^[1])
+
+Zweite versteckte Schicht:
+
+z^[2] = W^[2] * a^[1] + b^[2]
+
+a^[2] = ReLU(z^[2])
+
+Ausgabeschicht:
+
+z^[3] = W^[3] * a^[2] + b^[3]
+
+y = ReLU(z^[3])
+
+Die Ausgabe besteht aus 4 Werten. Da es sich um ein Klassifikationsnetzwerk handelt, repräsentiert jedes Neuron in der Ausgabeschicht eine bestimmte Klasse. Ein hoher Wert an einem Ausgang deutet darauf hin, dass das Netzwerk die Eingabe dieser spezifischen Kategorie zuordnet.
+
+Das Netzwerk ist aufgrund der zwei versteckten Schichten in der Lage, nichtlineare Zusammenhänge zu modellieren und somit komplexe Klassifikations- oder Regressionsprobleme zu lösen.
+
+
 # NN.MLP.03: Tensorflow Playground:
 
 # 1. logistisches Regressionsmodell
